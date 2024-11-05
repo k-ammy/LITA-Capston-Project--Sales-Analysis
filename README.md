@@ -77,9 +77,9 @@ This project analyzes the sales performance of a retail store, focusing on ident
 
 1. **Initial Data Exploration**:
    - **Pivot Tables** to summarize:
-     - Total Sales by Product: Found that **Product A** had the highest sales at **$125,000**.
-     - Total Sales by Region: **Region North** had the highest sales at **$200,000**.
-     - Total Sales by Month: **March** had peak sales of **$30,000**.
+     - Total Sales by Product: Found that **Product Shoes** had the highest sales at **$613,380**.
+     - Total Sales by Region: **Region South** had the highest sales at **$927,820**.
+     - Total Sales by Month: **February** had peak sales of **$546,300**.
 
 2. **Formulas**:
    - Average Sales per Product:
