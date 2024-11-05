@@ -95,35 +95,95 @@ This project analyzes the sales performance of a retail store, focusing on ident
 
 ### SQL Analysis
 
-1. **Total Sales per Product Category**:
-   ```sql
-   SELECT ProductCategory, SUM(Sales) AS TotalSales
-   FROM SalesData
-   GROUP BY ProductCategory;
-   ```
-2.**Number of Sales Transactions in Each Region:
-```sql
-SELECT Region, COUNT(*) AS TransactionCount
-FROM SalesData
-GROUP BY Region;
-```
-3. Highest-Selling Product by Sales Value:
+### SalesData Analysis Queries
+- The following queries analyze the SalesData table for various insights into sales performance, customer behavior, and regional contributions.
+
+- Query 1: Retrieve the total sales for each product category
  ```sql
-SELECT TOP 1 Product, SUM(Sales) AS TotalSales
-FROM SalesData
-GROUP BY Product
-ORDER BY TotalSales DESC;
-```
-4. Monthly Sales Totals:
-```sql
-SELECT MONTH(SaleDate) AS Month, SUM(Sales) AS MonthlyTotal
-FROM SalesData
-GROUP BY MONTH(SaleDate);
-```
+   SELECT Product, SUM(Sales) AS TotalSales
+   FROM SalesData
+   GROUP BY Product;
+ ```
+- Rename the column 'TotalSales' to 'Sales' (if needed in the database structure)
+   EXEC sp_rename 'SalesData.TotalSales', 'Sales', 'COLUMN';
+
+- Query 2: Find the number of sales transactions in each region
+ ```sql
+   SELECT Region, COUNT(OrderID) AS NumOfTransactions
+   FROM SalesData
+   GROUP BY Region;
+ ```
+
+- Query 3: Find the highest-selling product by total sales value
+ ```sql
+   SELECT TOP (1) Product, SUM(Sales) AS TotalSales
+   FROM SalesData
+   GROUP BY Product
+   ORDER BY TotalSales DESC;
+ ```
+
+- Query 4: Calculate total revenue per product
+ ```sql
+   SELECT Product, SUM(Sales) AS TotalRevenue
+   FROM SalesData
+   GROUP BY Product;
+ ```
+
+- Query 5: Calculate monthly sales totals for the current year
+ ```sql
+   SELECT MONTH(OrderDate) AS Month,
+   SUM(Sales) AS MonthlySalesTotal
+   FROM SalesData 
+   WHERE YEAR(OrderDate) = 2024
+   GROUP BY MONTH(OrderDate)
+   ORDER BY Month;
+ ```
+
+- Query 6: Find the top 5 customers by total purchase amount
+ ```sql
+   SELECT TOP (5) Customer_Id,
+   SUM(Sales) AS TotalPurchaseAmount 
+   FROM SalesData
+   GROUP BY Customer_Id
+   ORDER BY TotalPurchaseAmount DESC;
+ ```
+- Query 7: Calculate the percentage of total sales contributed by each region
+ ```sql
+   SELECT Region, 
+   SUM(Sales) AS RegionTotalSales,
+   FORMAT(ROUND((SUM(Sales) / CAST((SELECT SUM(Sales) FROM SalesData) AS DECIMAL(10, 2)) * 100), 1), '0.#') 
+   AS PercentageOfTotalSales
+   FROM SalesData
+   GROUP BY Region
+   ORDER BY PercentageOfTotalSales DESC;
+ ```
+- Query 8: Identify products with no sales in the last quarter
+ ```sql
+   SELECT Product 
+   FROM SalesData
+   GROUP BY Product
+   HAVING SUM(CASE 
+   WHEN OrderDate BETWEEN '2024-06-01' AND '2024-08-31' 
+   THEN 1 ELSE 0 END) = 0;
+ ```
+
 ## Power BI Dashboard
 ### Dashboard Layout:
 - Sales Overview: Displays monthly sales trends.
 - Top-Performing Products: Shows top 5 products by sales.
 - Regional Sales Breakdown: Map visualization highlighting sales by region.
 
-
+## Results
+### Excel
+Top Product: Product S (Shoes) with $613,380 in total sales.
+Highest Sales Region: South, generating $927,820 of total sales.
+Monthly Trends: February was the highest sales month with $546,300.
+### SQL
+- Query 1: List of products with total sales.
+- Query 2: Number of transactions per region.
+- Query 3: Top-selling product.
+- Query 4: Total revenue per product.
+- Query 5: Monthly sales totals for 2024.
+- Query 6: Top 5 customers by purchase amount.
+- Query 7: Sales contribution percentage by region.
+- Query 8: Products with no sales in the last quarter.
