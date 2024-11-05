@@ -92,7 +92,7 @@ This project analyzes the sales performance of a retail store, focusing on ident
      ```
   3. **Additional Report**:
    - Top 5 Products by Sales, showing **Product A** with the highest revenue.
-
+ 
 ### SQL Analysis
 
 ### SalesData Analysis Queries
@@ -156,6 +156,8 @@ This project analyzes the sales performance of a retail store, focusing on ident
    FROM SalesData
    GROUP BY Region
    ORDER BY PercentageOfTotalSales DESC;
+ 
+
  ```
 - Query 8: Identify products with no sales in the last quarter
  ```sql
@@ -187,3 +189,4 @@ Monthly Trends: February was the highest sales month with $546,300.
 - Query 6: Top 5 customers by purchase amount.
 - Query 7: Sales contribution percentage by region.
 - Query 8: Products with no sales in the last quarter.
+Screenshot (66).png
