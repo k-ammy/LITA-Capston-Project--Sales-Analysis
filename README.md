@@ -188,5 +188,9 @@ Monthly Trends: February was the highest sales month with $546,300.
 - Query 5: Monthly sales totals for 2024.
 - Query 6: Top 5 customers by purchase amount.
 - Query 7: Sales contribution percentage by region.
-- Query 8: Products with no sales in the last quarter.
-Screenshot (66).png
+
+
+![Screenshot (66)](https://github.com/user-attachments/assets/1a5945e2-eb27-4363-b15f-272b2d62d2a2)
+![Screenshot (67)](https://github.com/user-attachments/assets/d6350cff-fee7-4916-8e8a-e5a86c4e497d)
+![Screenshot (68)](https://github.com/user-attachments/assets/ca36061f-c4b9-4f04-bd19-6b40d0527c12)
+![Screenshot (69)](https://github.com/user-attachments/assets/4cc02ce0-1506-42ed-ba50-7b24b4ce8a8d)
