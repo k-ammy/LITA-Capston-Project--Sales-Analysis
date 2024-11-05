@@ -175,6 +175,7 @@ This project analyzes the sales performance of a retail store, focusing on ident
 - Top-Performing Products: Shows top 5 products by sales.
 - Regional Sales Breakdown: Map visualization highlighting sales by region.
 
+![WhatsApp Image 2024-11-04 at 14 57 21_ad8557c9](https://github.com/user-attachments/assets/3e974415-7aa9-492c-b8f7-d353302aa8f1)
 ## Results
 ### Excel
 Top Product: Product S (Shoes) with $613,380 in total sales.
